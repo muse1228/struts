@@ -61,7 +61,12 @@ public class ListAllUsers {
     }
 
     public String execute() {
-        this.userService.findAll();
+        try {
+            this.users = userService.findAll();
+        } catch (Exception e) {
+            this.errorMessage = e.getMessage();
+            return "failure";
+        }
         return "success";
     }
 }

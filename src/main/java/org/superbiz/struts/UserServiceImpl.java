@@ -20,16 +20,14 @@ package org.superbiz.struts;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
 public class UserServiceImpl implements UserService {
 
+    @PersistenceContext
     private EntityManager manager;
-
-    public UserServiceImpl(EntityManager manager) {
-        this.manager = manager;
-    }
 
     public void add(User user) {
         manager.persist(user);

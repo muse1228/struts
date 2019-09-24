@@ -18,6 +18,7 @@
 package org.superbiz.struts;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -68,6 +69,7 @@ public class AddUser {
         this.id = id;
     }
 
+    @Transactional
     public String execute() {
         this.userService.add(new User(id, firstName, lastName));
         return "success";
